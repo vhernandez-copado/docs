@@ -61,9 +61,24 @@
         "tab": "CI/CD",
         "groups": [
           {
-            "group": "CI/CD",
+            "group": "ci-cd",
             "pages": [
-              "ci-cd/SFP/introduction-to-sfp/migrate-to-sfp/planning-and-recommendations"
+              {
+                "group": "SFP",
+                "pages": [
+                  {
+                    "group": "introduction-to-sfp",
+                    "pages": [
+                      {
+                        "group": "migrate-to-sfp",
+                        "pages": [
+                          "ci-cd/SFP/introduction-to-sfp/migrate-to-sfp/planning-and-recommendations"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
