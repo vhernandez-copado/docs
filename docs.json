@@ -53,12 +53,6 @@
             "pages": [
               "studio/agentia-studio-introduction"
             ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              
-            ]
           }
         ]
       }
