@@ -29,7 +29,6 @@
           },
           {
             "group": "Writing content",
-            "expanded": "false",
             "pages": [
               "essentials/markdown",
               "essentials/code",
