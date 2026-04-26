@@ -1,80 +1,62 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "What is Agentia?"
 ---
 
-## Get started in three steps
+## Overview
 
-Get your documentation site running locally and make your first customization.
+Agentia™ is Copado’s AI-native platform for managing AI agents across the Salesforce delivery lifecycle. It enables teams to build, deploy, govern, and improve AI agents directly within DevOps workflows.
 
-### Step 1: Set up your local environment
+Unlike traditional AI tools that operate in isolation, Agentia embeds agents into the delivery process and connects them to a shared context layer. This approach—AgentOps—ensures consistent, governed, and production-ready AI execution with human-in-the-loop control. 
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+## Why Does Agentia Exist?
 
-### Step 2: Deploy your changes
+Traditional AI tools, such as general-purpose chat assistants, operate outside the delivery workflow and produce isolated outputs. Because they lack a shared context layer, results vary across users and cannot be consistently governed.
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+This creates a fundamental tension: teams are under pressure to accelerate delivery, but cannot fully trust AI within production workflows. For Salesforce teams, this challenge is amplified by complex environments, strict governance requirements, and the need to coordinate across multiple orgs. They require a structured path from manual and assisted delivery to automated and ultimately autonomous delivery, without sacrificing control or quality. 
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+## How Does Agentia Work? 
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Agentia is built on a human-in-the-loop operating model: humans define intent, agents execute tasks within guardrails, and humans verify outcomes. This ensures both speed and control across the delivery lifecycle.
 
-### Step 3: Go live
+Agentia provides a unified experience layer with guided workflows for structured tasks and an expert CLI for advanced operations.
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+Work begins in Agentia StudioTM, where you can define intent and manage projects. Agentia then applies context-aware intelligence, called Org Intelligence, from the Agentia AI Context HubTM—a centralized hub combining Salesforce metadata, organisational knowledge, and third-party integrations—to execute tasks across the delivery lifecycle.
 
-## Next steps
+Copado DevOps AI Agents operate across all stages of delivery: plan, build, test, release, and operate. Because all agents draw from the same shared context, outputs are consistent and aligned with organisational policies.
 
-Now that you have your docs running, explore these key features:
+Agentia supports a progression from: 
 
-<CardGroup cols={2}>
+1. Assisted delivery: agents support individual tasks. 
+2. Automated delivery: agents execute workflows. 
+3. Autonomous delivery: agents operate independently. 
 
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
+This allows organisations to adopt AI at their own pace while maintaining governance. 
 
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
+## Core Agentia Platform Products 
 
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
+Agentia is composed of integrated products that work together across the delivery lifecycle. 
 
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
+### Build and Design 
 
-</CardGroup>
+Agentia Studio  (Coming soon): An agent and workflow builder used to design agents, define workflows, configure agent behavior, and orchestrate automation. 
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+### Context and Org Intelligence 
+
+Agentia AI Context Hub (formerly Copado AI Platform): A context and workspace management product that connects Salesforce metadata, knowledge documents, and third-party integrations to feed agents with Org Intelligence. 
+
+### Delivery and Governance 
+
+Agentia Pipeline<sup>TM</sup>: The DevOps foundation for managing environment deployments, release workflows, and governance controls. 
+
+### Quality and Testing 
+
+- Agentia Testing<sup>TM</sup> (formerly Copado Robotic Testing): A built-in validation product that ensures quality for prompts, agent responses, and metadata changes before release. Observability and Ecosystem 
+- Agentia Mission Control<sup>TM</sup> (Coming soon): An observability product for monitoring agent performance, system health, and runtime diagnostics in production. 
+- Agentia Marketplace<sup>TM </sup>(Coming soon): A hub for discovering and publishing reusable assets like prompts, templates, and MCP (Model Context Protocol) servers.
+
+| Agentia Edition | Description | Included products | Use cases |
+| --- | --- | --- | --- |
+| Agentia Starter<sup>TM</sup> | A lightweight entry point for teams beginning to adopt AI-driven DevOps with essential pipeline capabilities and shared context. | Essentials Studio Context Hub | 1. Move from manual deployments to structured pipelines with basic governance. 2. Introduce AI-assisted workflows. 3. Create consistency across environments and teams with a simplified CI/CD model. |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
