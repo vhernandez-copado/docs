@@ -11,13 +11,12 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Get Started",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Get started",
             "pages": [
-              "quickstart",
-              "agentia-studio"
+              "quickstart"
             ]
           },
           {
@@ -47,12 +46,12 @@
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Studio",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Agentia Studio",
             "pages": [
-              "api-reference/introduction"
+              "studio/agentia-studio-introduction"
             ]
           },
           {
