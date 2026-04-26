@@ -16,6 +16,7 @@
           {
             "group": "Get started",
             "pages": [
+              "agentia-introduction",
               "quickstart"
             ]
           },
