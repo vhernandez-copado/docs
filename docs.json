@@ -48,9 +48,9 @@
       },
       {
         "tab": "Studio",
-        "groups": [
+        "dropdowns": [
           {
-            "group": "Agentia Studio",
+            "dropdown": "Agentia Studio",
             "pages": [
               "studio/agentia-studio-introduction"
             ]
