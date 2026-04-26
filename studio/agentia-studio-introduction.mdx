@@ -1,18 +1,11 @@
 ---
 title: "Agentia Studio"
-description: "Agentia Studio is Copado's platform for building and running autonomous workflows that agents execute across the full Salesforce software development lifecycle, from planning and building to testing, deployment, and validation. It is built on Agentia Context Hub, which provides context about your organization's Salesforce metadata, knowledge, and historical activity.  This article explains what Agentia Studio is, how it works, who it is designed for, and what you can do with it."
+description: "Agentia Studio is Copado's platform for building and running autonomous workflows that agents execute across the full Salesforce software development lifecycle, from planning and building to testing, deployment, and validation. It is built on Agentia Context Hub, which provides context about your organization's Salesforce metadata, knowledge, and historical activity. This article explains what Agentia Studio is, how it works, who it is designed for, and what you can do with it."
 sidebarTitle: "Agentia Studio Introduction"
 tag: "Agentia Studio"
 ---
 
 import SnippetIntro from '/snippets/snippet-intro.mdx';
-
-<Info>
-  **Prerequisites**:
-
-  - Node.js version 19 or higher
-  - A docs repository with a `docs.json` file
-</Info>
 
 <Frame>
   <img
@@ -23,92 +16,104 @@ import SnippetIntro from '/snippets/snippet-intro.mdx';
   />
 </Frame>
 
-<Steps>
-  <Step title="Install the Mintlify CLI">
-    ```bash
-    npm i -g mint
-    ```
-  </Step>
-  <Step title="Preview locally">
-    Navigate to your docs directory where your `docs.json` file is located, and run the following command:
+## What Agentia Studio is
 
-    ```bash
-    mint dev
-    ```
+Agentia Studio is Copado's platform for defining and executing Workflows across the Salesforce development lifecycle. These Workflows can be generated from natural language requests or created from reusable templates and executed by AI agents.Studio functions as the execution layer in the Agentia architecture. It uses context provided by the Agentia Context HubTM (formerly Copado AI Platform), which aggregates organizational knowledge, Salesforce metadata, and historical activity, known as Org Intelligence. This Org Intelligence is available throughout the workflow lifecycle, so each step can build on prior outputs.This model shifts execution from manually coordinated steps to system-driven workflows that run with built-in controls.
 
-    A local preview of your documentation will be available at `http://localhost:3000`.
-  </Step>
-</Steps>
+## Why Agentia Studio Exists
 
-<Callout icon="pencil">
-</Callout>
+Most Salesforce development workflows involve repetitive patterns that still require manual effort at every step. While AI code assistants accelerate code generation, a human must still manually run tests, coordinate with the release manager, handle deployment, and validate the outcome. Accelerating one step while the surrounding process remains manual shifts the bottleneck rather than removing it. Agentia Studio exists to automate the full process as a single pipeline. Instead of advancing work step by step, you define the outcome and the system handles execution, including validation and approvals.
 
-<Accordion title="This is an accordion" icon="apple-whole" iconType="sharp-solid">
-  Here's the content of the accordion. 
-</Accordion>
+## How Agentia Studio Works
 
-## Custom ports
+You can initiate work in Agentia Studio by describing your intent in natural language or by running an existing workflow. The agent can generate a workflow structure from your request.  Agentia Studio is built around two core concepts: Skills and Workflows.
 
-By default, Mintlify uses port 3000. You can customize the port Mintlify runs on by using the `--port` flag. For example, to run Mintlify on port 3333, use this command:
+### Skills
 
-```bash
-mint dev --port 3333
-```
+A Skill is a discrete, reusable capability that defines what an agent can do. Examples include generating an Apex class, running a test suite, retrieving metadata, or deploying changes. Skills can leverage context from Agentia Context Hub, interact with external systems via MCP, and produce structured outputs that feed into subsequent workflow steps. 
 
-If you attempt to run Mintlify on a port that's already in use, it will use the next available port:
+### Agentia Workflows
 
-```md
-Port 3000 is already in use. Trying 3001 instead.
-```
+An Agentia Workflow is a structured sequence of steps that instructs the agent what to do and in what order.  Agentia Workflows can be generated from a request or created as reusable templates. They accept typed input parameters, which allows the same workflow to run across different user stories, environments, or Salesforce orgs without modification. The following table describes the components of an Agentia Workflow. Workflow ComponentWhat It DoesStepsSequential units of work. Each step can represent an action, a condition, or an approval. Steps accept inputs and produce structured outputs that feed into the next step.SkillsExecution capabilities that are used to complete steps. The agent selects the appropriate skill based on the step's requirements.InputsTyped parameters defined at the workflow level (for example, user\_story\_id: string, environment: string). These remove the need for hard-coded values.Approval gatesPoints in the workflow where execution pauses and requires human approval before continuing.ConditionsAutomated checks that evaluate data or outputs from previous steps and determine whether the workflow continues, stops, or follows a different path.
 
-## Mintlify versions
+### How Skills and Agentia Workflows Interact
 
-Please note that each CLI release is associated with a specific version of Mintlify. If your local preview does not align with the production version, please update the CLI:
+The Agentia Workflow defines what happens at each step. The agent determines how to fulfill each step by selecting and applying the appropriate skill.  You do not manually attach skills to workflow steps. The system resolves which skill to use based on the requirements of each step.
 
-```bash
-npm mint update
-```
+### An End-to-End Workflow Example
 
-## Validating links
+Request: "Add a Mobile Phone field to the Contact object."
 
-The CLI can assist with validating links in your documentation. To identify any broken links, use the following command:
+What the agent does: 
 
-```bash
-mint broken-links
-```
+1. Requests missing details, such as field type or validation rules.  
+2. Scans the org for naming conflicts and similar fields.
+3. Generates the field metadata and layout updates.
+4. Creates or updates test classes.
+5. Runs all tests to validate the changes.  
+6. Deploys the field with an approval gate.
 
-## Deployment
+You can initiate this process with a natural language request. The system then executes the workflow as a coordinated pipeline and pauses only at defined approval points or when additional input is required.
 
-If the deployment is successful, you should see the following:
+### Governance and Human-in-the-Loop Control
 
-<Frame>
-  <img
-    src="/images/checks-passed.png"
-    alt="Screenshot of a deployment confirmation message that says All checks have passed."
-    style={{ borderRadius: '0.5rem' }}
-  />
-</Frame>
+Agentia Studio enforces governance with three mechanisms:
 
-## Code formatting
+- Conditions validate whether a step was completed successfully. If a condition is not met, execution stops.
+- Guardrails restrict what actions the system is allowed to perform.
+- Approval Gates require human review before certain steps can proceed.
 
-We suggest using extensions on your IDE to recognize and format MDX. If you're a VSCode user, consider the [MDX VSCode extension](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx) for syntax highlighting, and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) for code formatting.
+These controls allow workflows to run autonomously while maintaining defined checkpoints.
 
-## Troubleshooting
+## Why Agentia Studio
 
-<AccordionGroup>
-  <Accordion title='Error: Could not load the "sharp" module using the darwin-arm64 runtime'>
-    This may be due to an outdated version of node. Try the following:
+Agentia Studio combines workflow definition, execution, and context-aware automation in a single system:
 
-    1. Remove the currently-installed version of the CLI: `npm remove -g mint`
-    2. Upgrade to Node v19 or higher.
-    3. Reinstall the CLI: `npm i -g mint`
-  </Accordion>
+- Salesforce-specific execution: Handles metadata, dependencies, and deployment patterns specific to Salesforce.
+- End-to-end workflows: Executes the full process from request to deployment within a single pipeline.
+- Controlled automation: Applies conditions, guardrails, and approvals during execution.
+- Context-aware execution: Uses organizational data and history to inform decisions at each step.
 
-  <Accordion title="Issue: Encountering an unknown error">
-    Solution: Go to the root of your device and delete the `~/.mintlify` folder. Then run `mint dev` again.
-  </Accordion>
-</AccordionGroup>
+## What You Can Do with Agentia Studio
 
-Curious about what changed in the latest CLI version? Check out the [CLI changelog](https://www.npmjs.com/package/mintlify?activeTab=versions).
+Agentia Studio goes beyond building code; it can automate any process that follows a defined sequence of steps. The following are examples of supported use cases.
 
-<SnippetIntro />
+### Building Salesforce Components
+
+You describe the component you need. The system generates the metadata, writes tests, runs them, and deploys the changes with approval.
+
+### Creating Agentforce Agents
+
+You describe the agent's purpose and scope. The system generates the Topic definition, agent configuration, supporting Apex classes, Flows, invocable actions, and conversation test cases, then runs the tests and deploys the complete agent to your target org.
+
+### Exception Handling
+
+You report a failure. The agent retrieves the error logs, identifies the root cause, proposes a fix, runs it through quality gates and test suites, and deploys the patch with approval.
+
+### Tech Debt Management
+
+You request a scan for unused Apex classes. The agent checks for all references across the org, generates an impact analysis report with confidence levels, removes the safe candidates, validates that nothing broke, and produces a summary report.
+
+## Who Agentia Studio Is Designed For
+
+Agentia Studio is designed for teams working in the Salesforce ecosystem who want to reduce manual execution overhead while maintaining governance and control. 
+
+### Salesforce Developers
+
+Use Studio to execute repeatable tasks such as generating components, running tests, and deploying changes. You review outputs at defined checkpoints rather than executing each step manually.
+
+### Release Managers
+
+Use Studio to run release processes as workflows instead of coordinating steps manually. You approve outcomes rather than managing handoffs.
+
+### Salesforce Architects
+
+Define standards as workflow templates and guardrails so they are enforced automatically during execution.
+
+### Salesforce Admins
+
+Describe requests in natural language. The system generates and executes workflows that implement the change.
+
+### Engineering and IT Leaders
+
+Use Studio to standardize execution and reduce time spent on manual coordination across the development lifecycle.
